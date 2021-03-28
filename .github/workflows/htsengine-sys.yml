@@ -6,9 +6,6 @@ jobs:
   build:
     name: Build on ${{ matrix.target }}
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./inner-crates/htsengine-sys
     strategy:
       matrix:
         target:
@@ -31,4 +28,4 @@ jobs:
         with:
           use-cross: true
           command: build
-          args: --release --target ${{ matrix.target }}
+          args: --release --target ${{ matrix.target }} --manifest-path ./inner-crates/htsengine-sys/Cargo.toml
