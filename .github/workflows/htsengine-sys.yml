@@ -28,4 +28,4 @@ jobs:
         with:
           use-cross: true
           command: build
-          args: --release --target ${{ matrix.target }} --manifest-path ./inner-crates/htsengine-sys/Cargo.toml
+          args: --target ${{ matrix.target }} --manifest-path ./inner-crates/htsengine-sys/Cargo.toml
