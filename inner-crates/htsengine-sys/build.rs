@@ -43,7 +43,7 @@ fn main() {
 
     let bindings = bindgen::Builder::default()
         .header("wrapper.h")
-        .clang_arg(format!("-I{}", install_dir.to_string_lossy()))
+        .clang_arg(format!("-I{}/include", install_dir.to_string_lossy()))
         .parse_callbacks(Box::new(bindgen::CargoCallbacks))
         .generate()
         .expect("Unable to generate bindings");
