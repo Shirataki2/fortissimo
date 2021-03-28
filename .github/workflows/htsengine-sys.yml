@@ -6,8 +6,9 @@ jobs:
   build:
     name: Build on ${{ matrix.target }}
     runs-on: ubuntu-latest
-    env:
-      WORKING_DIRECTORY: ./inner-crates/htsengine-sys
+    defaults:
+      run:
+        working-directory: ./inner-crates/htsengine-sys
     strategy:
       matrix:
         target:
@@ -22,13 +23,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
-        working-directory: ${{ env.WORKING_DIRECTORY }}
         with:
           toolchain: stable
           target: ${{ matrix.target }}
           override: true
       - uses: actions-rs/cargo@v1
-        working-directory: ${{ env.WORKING_DIRECTORY }}
         with:
           use-cross: true
           command: build
